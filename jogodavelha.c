@@ -40,8 +40,18 @@ bool win (){
     }
 
 
-    return(ganhou);
+    if(velha[0][0]==velha[1][1] && velha[1][1]==velha[2][2]){
+        ganhou=true;
+        printf("\no jogo terminou!");
+    }
 
+     if(velha[0][2]==velha[1][1] && velha[1][1]==velha[2][0]){
+        ganhou=true;
+        printf("\no jogo terminou!");
+    }
+
+
+    return(ganhou);
 }
 
 void jogo(){
@@ -64,7 +74,12 @@ void jogo(){
             }else{
                 velha[0][numbero]=SIMB;
                 cont=cont+1;
-                WINNER=win();
+                if(cont==9){
+                    printf("\no jogo deu velha!");
+                    WINNER=true;
+                }else{
+                    WINNER=win();
+                }
             }
         
         }else{
@@ -92,8 +107,15 @@ void jogo(){
                     system("pause");
                 }else{
                     velha[0][numbero]=SIMB;
-                    cont=cont+1;
-                    WINNER=win();
+                    cont=cont+1;   
+                    
+                    if(cont==9){
+                        printf("\no jogo deu velha!");
+                        WINNER=true;
+                    }else{
+                        WINNER=win();
+                    }
+                    
                 }
                 
             } else {
